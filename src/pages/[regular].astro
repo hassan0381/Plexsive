@@ -1,57 +1,67 @@
 ---
 import MainLayout from "../layouts/main-layout.astro";
-import Button from '../components/button.tsx'
-import ChevronRight from "../icons/chevronRight.tsx"
+import Button from "../components/button.tsx";
+import ChevronRight from "../icons/chevronRight.tsx";
 import { getSinglePage } from "../lib/contentParser.astro";
 
 export async function getStaticPaths() {
   const pages = await getSinglePage("pages");
   const allPages = [...pages];
 
-  const paths = allPages.map((page:any) => ({
-    params: {regular: page.slug,},
+  const paths = allPages.map((page: any) => ({
+    params: { regular: page.slug },
     props: { page },
   }));
   return paths;
 }
 const { page } = Astro.props;
-const {Content} = await page.render();
-const { 
-  title, category_name, category_url, heading, sub_heading, 
-  heroimage, value_prop, case_studies_heading, 
-  case_studies_subheading, case_studies_description, case_studies_category, 
-  case_studies_items, videosection_videotitle, 
-  videosection_videourl, videosection_heroimage, 
-  related_articles_heading, related_articles_subheading, 
-  related_articles_description, related_articles_category, 
-  related_articles_items
+const { Content } = await page.render();
+const {
+  title,
+  category_name,
+  category_url,
+  heading,
+  sub_heading,
+  heroimage,
+  value_prop,
+  case_studies_heading,
+  case_studies_subheading,
+  case_studies_description,
+  case_studies_category,
+  case_studies_items,
+  videosection_videotitle,
+  videosection_videourl,
+  videosection_heroimage,
+  related_articles_heading,
+  related_articles_subheading,
+  related_articles_description,
+  related_articles_category,
+  related_articles_items,
 } = page.data;
 const banner_img = {
-    backgroundImage:
-        "url('"+heroimage+"')",
+  backgroundImage: "url('" + heroimage + "')",
 };
 const video_section_style = {
-  backgroundImage:
-        "url('"+videosection_heroimage+"')",
-    width: "100%",       
-    minHeight: "35vh",
-    padding: "5vmin",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat"
+  backgroundImage: "url('" + videosection_heroimage + "')",
+  width: "100%",
+  minHeight: "35vh",
+  padding: "5vmin",
+  alignItems: "center",
+  justifyContent: "center",
+  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat",
 };
-const sub_heading_display = sub_heading.toUpperCase()
+const sub_heading_display = sub_heading.toUpperCase();
 const videosection_description = "Content to be added";
 console.log(page.data);
 ---
 
 <MainLayout title={title}>
-  <section class="detailedpage_banner_topper">    
+  <section class="detailedpage_banner_topper">
     <div class="container">
       <div class="wrapper">
         <div class="detailedpage_banner_topper_categoryheading">
-          <a href={category_url}>{category_name}</a>    
+          <a href={category_url}>{category_name}</a>
         </div>
         <ChevronRight />
         <div class="detailedpage_banner_topper_mainheading">
@@ -61,88 +71,88 @@ console.log(page.data);
     </div>
   </section>
 
-  <section class="bg-hero" style={banner_img}>   
+  <section class="bg-hero" style={banner_img}>
     <div class="container">
       <div class="contentWrapper">
-          <p class="subHeading">{sub_heading_display}</p>
-          <h1 class="heading">{heading}</h1>
-        </div>
+        <p class="subHeading">{sub_heading_display}</p>
+        <h1 class="heading">{heading}</h1>
       </div>
     </div>
   </section>
   <section class="about pb-0">
     <div class="container">
       <div class="aboutDesc">
-        <Content />  
-      </div>        
+        <Content />
+      </div>
     </div>
   </section>
   <section class="caseStudies">
-		  <div class="container">
-			  <h4 class="subHeading">{case_studies_subheading}</h4>
-			  <h2 class="sectionHeading">{case_studies_heading}</h2>
-			<p class="desc">
-{case_studies_description}			</p>
-			<div class="projectWrapper">
-				{
-			  case_studies_items.map((item:any, index:any) => (
-						  
-				<div class="project">
-					<div class="imgWrapper">
-						<img src={item.case_study_image} />                  
-					</div> 
-					<h2 class="title">
-						{item.case_study_title}
-					</h2>
-					<h4 class="text">
-						{item.case_study_subheading}
-					</h4>
-					<Button text={item.case_study_buttontext} href={"../casestudies/"+ item.case_study_slug}
-						className='btn' />			  
-				</div>          
-			  ))
-			}
-			</div>
-		</div>
-	</section>
+    <div class="container">
+      <h4 class="subHeading">{case_studies_subheading}</h4>
+      <h2 class="sectionHeading">{case_studies_heading}</h2>
+      <p class="desc">
+        {case_studies_description}
+      </p>
+      <div class="projectWrapper">
+        {
+          case_studies_items.map((item: any, index: any) => (
+            <div class="project">
+              <div class="imgWrapper">
+                <img src={item.case_study_image} />
+              </div>
+              <div class="wrapper">
+                <h2 class="title">{item.case_study_title}</h2>
+                <h4 class="text">{item.case_study_subheading}</h4>
+                <Button
+                  text={item.case_study_buttontext}
+                  href={"../casestudies/" + item.case_study_slug}
+                  className="btn"
+                />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
   <section class="videoSection">
-  <div class="container">
-    <div class="gridWrapper">      
-      <div class="leftWrapper">
+    <div class="container">
+      <div class="gridWrapper">
+        <div class="leftWrapper">
           <h2 class="heading">{videosection_videotitle}</h2>
           <p class="desc">{videosection_description}</p>
-      </div>
-        <div class="right">
-          <iframe width="420" height="315" src={videosection_videourl} />
         </div>
+        <div class="right">
+          <iframe width="420" height="315" src={videosection_videourl}></iframe>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
   <section class="caseStudies">
-		  <div class="container">
-			  <h4 class="subHeading">{related_articles_subheading}</h4>
-			  <h2 class="sectionHeading">{related_articles_heading}</h2>
-			<p class="desc">{related_articles_description}</p>
-			<div class="projectWrapper">
-				{
-			  related_articles_items.map((item:any, index:any) => (
-				<div class="project">
-					<div class="imgWrapper">
-						<img src={item.related_article_image} />                  
-					</div> 
-					<h2 class="title">
-						{item.related_article_title}
-					</h2>
-					<h4 class="text">
-						{item.related_article_subheading}
-					</h4>
-					<Button text={item.related_article_buttontext} href={"../pulse/"+ item.related_article_slug}
-						className='btn' />			  
-				</div>          
-			  ))
-			}
-			</div>
-		</div>
-	</section>
-  
+    <div class="container">
+      <h4 class="subHeading">{related_articles_subheading}</h4>
+      <h2 class="sectionHeading">{related_articles_heading}</h2>
+      <p class="desc">{related_articles_description}</p>
+      <div class="projectWrapper">
+        {
+          related_articles_items.map((item: any, index: any) => (
+            <div class="project">
+              <div class="imgWrapper">
+                <img src={item.related_article_image} />
+              </div>
+              <div class="wrapper">
+                <h2 class="title">{item.related_article_title}</h2>
+                <h4 class="text">{item.related_article_subheading}</h4>
+                <Button
+                  text={item.related_article_buttontext}
+                  href={"../pulse/" + item.related_article_slug}
+                  className="btn"
+                />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 </MainLayout>

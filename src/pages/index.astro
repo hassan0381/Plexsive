@@ -1,260 +1,350 @@
 ---
-import MainLayout from '../layouts/main-layout.astro'
-import Button from '../components/button.tsx'
-import ArrowSec from '../icons/arrow-sec.tsx'
-import '../assets/main.css'
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import MainLayout from "../layouts/main-layout.astro";
+import Button from "../components/button.tsx";
+import ArrowSec from "../icons/arrow-sec.tsx";
+import DataIcon from "../assets/Data.svg?raw";
+import AIIcon from "../assets/AI.svg?raw";
+import SolutionIcon from "../assets/Solution.svg?raw";
+import ProcessIcon from "../assets/Process.svg?raw";
 
 const services = [
-	{
-		title: 'Data Driven Decisions',
-		text: 'Empower your strategy with Data Driven Decisions, where insightful analytics transform vast information into actionable intelligence, fostering smart moves and competitive edges in a rapidly evolving marketplace.',
-		slug: '/services/data-operations',
-		bgImage: "./charts_overlay_city.jpg"
-	},
-	{
-		title: 'AI/ML Integration',
-		text: 'Harness the transformative power of AI and ML integration to streamline operations, enhance decision-making, and unlock innovative potential for an agile, competitive edge in your industry.',
-		slug: '/services/artificial-intelligence',
-		bgImage: "./iot_settings_rainbow.jpg"
-
-	},
-	{
-		title: 'Tailored Solutions',
-		text: 'Every organisation has unique challenges; our custom-tailored solutions adapt to your distinct needs, fostering innovation and elevating operational efficiency to new heights.',
-		slug: '/services/data-operations',
-		bgImage: "./data_operations_boardroom.jpg"
-
-	},
-	{
-		title: 'Process Automation',
-		text: 'Process automation streamlines your workflows, effortlessly enhancing efficiency and reliability, while liberating your team to focus on innovation and strategic growth.',
-		slug: '/services/process-improvement-automation',
-		bgImage: "./woman_virtual_dashboards.jpg"
-
-	}
-]
+  {
+    title: "Data Driven Decisions",
+    text: "Empower your strategy with Data Driven Decisions, where insightful analytics transform vast information into actionable intelligence, fostering smart moves and competitive edges in a rapidly evolving marketplace.",
+    slug: "/services/data-operations",
+    icon: DataIcon,
+    bgImage: "./charts_overlay_city.jpg",
+  },
+  {
+    title: "AI/ML Integration",
+    text: "Harness the transformative power of AI and ML integration to streamline operations, enhance decision-making, and unlock innovative potential for an agile, competitive edge in your industry.",
+    slug: "/services/artificial-intelligence",
+    icon: AIIcon,
+    bgImage: "./iot_settings_rainbow.jpg",
+  },
+  {
+    title: "Tailored Solutions",
+    text: "Every organisation has unique challenges; our custom-tailored solutions adapt to your distinct needs, fostering innovation and elevating operational efficiency to new heights.",
+    slug: "/services/data-operations",
+    icon: SolutionIcon,
+    bgImage: "./data_operations_boardroom.jpg",
+  },
+  {
+    title: "Process Automation",
+    text: "Process automation streamlines your workflows, effortlessly enhancing efficiency and reliability, while liberating your team to focus on innovation and strategic growth.",
+    slug: "/services/process-improvement-automation",
+    icon: ProcessIcon,
+    bgImage: "./woman_virtual_dashboards.jpg",
+  },
+];
 const projects = [
-	{'case_study_subheading': 'Results through Experience', 'case_study_image': '/project1.png', 'case_study_title': 'Revolutionising Patient Care with Integrated Digital Strategy', 'case_study_buttontext': 'Read More', 'case_study_slug': 'revolutionizing-patient-care-with-integrated-digital-strategy'},
-	{'case_study_subheading': 'Results through Experience', 'case_study_image': '/iot_woman_reviewing_machinerydata.jpg', 'case_study_title': 'Revitalising Industry - A Transformation Through Tailored Technology', 'case_study_buttontext': 'Read More', 'case_study_slug': 'revitalizing-industry:-a-transformation-through-tailored-technology'},
-	{'case_study_subheading': 'Results through Experience', 'case_study_image': '/project3.png', 'case_study_title': 'Unlocking Logistics Efficiency with Strategic Tech Integration', 'case_study_buttontext': 'Read More', 'case_study_slug': 'revolutionizing-logistics-efficiency-with-strategic-tech-integration'},
-	{'case_study_subheading': 'Results through Experience', 'case_study_image': '/project4.png', 'case_study_title': 'Harvesting the Future: Agriculture with Smart Technology', 'case_study_buttontext': 'Read More', 'case_study_slug': 'harvesting-the-future:-revolutionizing-agriculture-with-smart-technology'},
-	{'case_study_subheading': 'Results through Experience', 'case_study_image': '/facial_detection_street_crowd.jpg', 'case_study_title': 'Retail for GenerationAI - A Tale of Tech-Driven Transformation', 'case_study_buttontext': 'Read More', 'case_study_slug': '"revitalizing-retail:-a-tale-of-tech-driven-transformation"'},
-	{'case_study_subheading': 'Results through Experience', 'case_study_image': '/man-using-computer-laptop-software-with-graphs-and.jpg', 'case_study_title': 'Updating Data Management in Government Operations', 'case_study_buttontext': 'Read More', 'case_study_slug': 'revolutionizing-data-management-in-government-operations'}
-]
+  {
+    case_study_subheading: "Results through Experience",
+    case_study_image: "/project1.png",
+    case_study_title:
+      "Revolutionising Patient Care with Integrated Digital Strategy",
+    case_study_buttontext: "Read More",
+    case_study_slug:
+      "revolutionizing-patient-care-with-integrated-digital-strategy",
+  },
+  {
+    case_study_subheading: "Results through Experience",
+    case_study_image: "/iot_woman_reviewing_machinerydata.jpg",
+    case_study_title:
+      "Revitalising Industry - A Transformation Through Tailored Technology",
+    case_study_buttontext: "Read More",
+    case_study_slug:
+      "revitalizing-industry:-a-transformation-through-tailored-technology",
+  },
+  {
+    case_study_subheading: "Results through Experience",
+    case_study_image: "/project3.png",
+    case_study_title:
+      "Unlocking Logistics Efficiency with Strategic Tech Integration",
+    case_study_buttontext: "Read More",
+    case_study_slug:
+      "revolutionizing-logistics-efficiency-with-strategic-tech-integration",
+  },
+  {
+    case_study_subheading: "Results through Experience",
+    case_study_image: "/project4.png",
+    case_study_title:
+      "Harvesting the Future: Agriculture with Smart Technology",
+    case_study_buttontext: "Read More",
+    case_study_slug:
+      "harvesting-the-future:-revolutionizing-agriculture-with-smart-technology",
+  },
+  {
+    case_study_subheading: "Results through Experience",
+    case_study_image: "/facial_detection_street_crowd.jpg",
+    case_study_title:
+      "Retail for GenerationAI - A Tale of Tech-Driven Transformation",
+    case_study_buttontext: "Read More",
+    case_study_slug:
+      '"revitalizing-retail:-a-tale-of-tech-driven-transformation"',
+  },
+  {
+    case_study_subheading: "Results through Experience",
+    case_study_image: "/man-using-computer-laptop-software-with-graphs-and.jpg",
+    case_study_title: "Updating Data Management in Government Operations",
+    case_study_buttontext: "Read More",
+    case_study_slug: "revolutionizing-data-management-in-government-operations",
+  },
+];
 const partnerLogos1 = [
-	{
-		img: '/partner_blap.png'
-	},
-	{
-		img: '/partner_crowdbuild.png'
-	},
-	{
-		img: '/partner_dznr.png'
-	},
-	{
-		img: '/partner_insureme.png'
-	},
-	{
-		img: '/partner_intellispaceai.png'
-	}
-]
+  {
+    img: "/partner_blap.png",
+  },
+  {
+    img: "/partner_crowdbuild.png",
+  },
+  {
+    img: "/partner_dznr.png",
+  },
+  {
+    img: "/partner_insureme.png",
+  },
+  {
+    img: "/partner_intellispaceai.png",
+  },
+];
 const partnerLogos2 = [
-	{
-		img: '/partner_liftpitch.png'
-	},
-	{
-		img: '/partner_saltspace.png'
-	},
-	{
-		img: '/partner_quantalai.png'
-	},
-	{
-		img: '/partner_boatbuddy.png'
-	},
-	{
-		img: '/partner_organiklean.png'
-	}
-]
+  {
+    img: "/partner_liftpitch.png",
+  },
+  {
+    img: "/partner_saltspace.png",
+  },
+  {
+    img: "/partner_quantalai.png",
+  },
+  {
+    img: "/partner_boatbuddy.png",
+  },
+  {
+    img: "/partner_organiklean.png",
+  },
+];
 const partnerLogos3 = [
-	{
-		img: '/partner_huntley.png'
-	},
-	{
-		img: '/partner_seawall.png'
-	},
-	{
-		img: '/partner_iacobus.png'
-	},
-	{
-		img: '/partner_tententhsdigital.png'
-	},
-	{
-		img: '/partner_wrkrs.png'
-	}
-]
+  {
+    img: "/partner_huntley.png",
+  },
+  {
+    img: "/partner_seawall.png",
+  },
+  {
+    img: "/partner_iacobus.png",
+  },
+  {
+    img: "/partner_tententhsdigital.png",
+  },
+  {
+    img: "/partner_wrkrs.png",
+  },
+];
 const partnerLogos4 = [
-	{ 
-		img: '/partner_servicepoint.png'
-	},
-	{ 
-		img: '/partner_kingstreet.png'
-	},
-	{ 
-		img: '/partner_ticktrader.png'
-	},
-	{ 
-		img: '/partner_regulus.png'
-	},
-	{ 
-		img: '/partner_plexsive.png'
-	}
-]
-const featured_article_heading = 'Empowering the Future of Work with Artificial Intelligence'
-const featured_article_description = 'Embark on a journey through the transformative landscape of artificial intelligence, where the lines between data and strategic insight blur into opportunities for efficiency and innovation. This narrative dives deep into the capabilities of AI, from the precision of data analysis to the foresight of time series forecasting and the clarity of predictive analytics. Envision a world where computer vision elevates every industry, and tailored AI solutions synergize with unique business visions. Far from displacing human workers, AI augments their roles, fostering a collaborative partnership that reshapes the workplace. Discover how AI serves as the crucible for enduring legacies in a modern marketplace that values intelligence, responsiveness, and the ability to harness a future bursting with untapped potential.'
-const featured_article_img = '/virtual_dashboard_laptop.jpg'
-const featured_article_slug= '/pulse/empowering-the-future-of-work-with-artificial-intelligence'
-const featured_article_subheading = 'Innovation for Generation AI'
-const featured_article_button_text = 'Read More'
+  {
+    img: "/partner_servicepoint.png",
+  },
+  {
+    img: "/partner_kingstreet.png",
+  },
+  {
+    img: "/partner_ticktrader.png",
+  },
+  {
+    img: "/partner_regulus.png",
+  },
+  {
+    img: "/partner_plexsive.png",
+  },
+];
+const featured_article1_heading =
+  "Empowering the Future of Work with Artificial Intelligence";
+const featured_article_description =
+  "Embark on a journey through the transformative landscape of artificial intelligence, where the lines between data and strategic insight blur into opportunities for efficiency and innovation. This narrative dives deep into the capabilities of AI, from the precision of data analysis to the foresight of time series forecasting and the clarity of predictive analytics. Envision a world where computer vision elevates every industry, and tailored AI solutions synergize with unique business visions. Far from displacing human workers, AI augments their roles, fostering a collaborative partnership that reshapes the workplace. Discover how AI serves as the crucible for enduring legacies in a modern marketplace that values intelligence, responsiveness, and the ability to harness a future bursting with untapped potential.";
+const featured_article1_img = "/team_laptops_from_Above.jpg";
+const featured_article_slug =
+  "/pulse/empowering-the-future-of-work-with-artificial-intelligence";
+const featured_article_subheading = "Innovation for Generation AI";
+const featured_article_button_text = "Read More";
 
-const featured_article2_heading = 'Harmonising Industry - The Predictive Maintenance Revolution'
-const featured_article2_description = 'In the industrious concerto of heavy sectors like Mining, Oil & Gas, predictive maintenance harmonizes the melody of machine longevity with the rhythm of innovation. By attentively listening to the data-rich whispers of machinery through IoT sensors and interpreting these signals with machine learning, this approach enables businesses to proactively address potential faults, optimizing operational efficiency and reducing unplanned downtimes. Far from a futuristic fantasy, this strategic foresight is an economic, environmental, and safety imperative, composing a symphony of reliability and sustainability in the relentless production opera.'
-const featured_article2_img = '/mining_ore_conveyor.jpg'
-const featured_article2_slug= '/pulse/harmonizing-industry-the-predictive-maintenance-revolution'
-const featured_article2_subheading = 'Productivity through AI'
-const featured_article2_button_text = 'Read More'
-
+const featured_article2_heading =
+  "Harmonising Industry - The Predictive Maintenance Revolution";
+const featured_article2_description =
+  "In the industrious concerto of heavy sectors like Mining, Oil & Gas, predictive maintenance harmonizes the melody of machine longevity with the rhythm of innovation. By attentively listening to the data-rich whispers of machinery through IoT sensors and interpreting these signals with machine learning, this approach enables businesses to proactively address potential faults, optimizing operational efficiency and reducing unplanned downtimes. Far from a futuristic fantasy, this strategic foresight is an economic, environmental, and safety imperative, composing a symphony of reliability and sustainability in the relentless production opera.";
+const featured_article2_img = "/mining_ore_conveyor.jpg";
+const featured_article2_slug =
+  "/pulse/harmonizing-industry-the-predictive-maintenance-revolution";
+const featured_article2_subheading = "Productivity through AI";
+const featured_article2_button_text = "Read More";
 ---
 
+<MainLayout title="Maven Technologies">
+  <!-- Banner -->
+  <section class="bg-hero">
+    <div class="container">
+      <div class="contentWrapper">
+        <h1 class="heading">Customer centric solutions for GenerationAI</h1>
+        <p class="subHeading">
+          Discover the business benefits of elite technologies implemented by
+          experienced professionals.
+        </p>
+        <a href="/service">
+          <Button text="Get Started" className="btn" href="/contact" />
+        </a>
+      </div>
+    </div>
+  </section>
 
-<MainLayout title = 'Maven Technologies'>
+  <!-- Value Prop -->
+  <section class="about">
+    <div class="container">
+      <div class="aboutDesc pb-30">
+        Plexsive is a technology solutions agency that help business and
+        government navigate the ever-changing world in this GenerationAI. We
+        implement customer focused, future proof solutions that are designed
+        from the bottom up to ensure our customer's business are at the leading
+        edge while maximising value and productivity.
+        <br /><br />Our elite professionals work with you and your team to
+        ensure the solutions we provide are tailored to your business and are
+        designed to be scalable and adaptable to the ever changing world of
+        technology. We pride ourselves on our ability to deliver the best
+        possible results for our customers when most only provide the bare
+        minimum.
+      </div>
+      <h2 class="sectionHeading">Our Services</h2>
+      <div class="serviceWrapper">
+        {
+          services.map((service) => {
+            return (
+              <div class="serviceBox">
+                <div class="icon">
+                  <Fragment set:html={service.icon} />
+                </div>
+                <h3 class="heading">{service.title}</h3>
+                <p class="desc">{service.text}</p>
+                <a href={service.slug} class="btn">
+                  Read More <ArrowSec />
+                </a>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
 
-	<!-- Banner -->
-	<section class="bg-hero">
-		<div class="container">			
-			<div class="contentWrapper">
-				<h1 class="heading" >Customer centric solutions for GenerationAI
-</h1>
-			<p class="subHeading ">
-				Discover the business benefits of elite technologies implemented by experienced professionals.	
-			</p>
-			<a href="/service">
-			<Button text="Get Started" className='btn' href="/contact">
-			</a>
-			</div>
-		</div>
-	</section>
+  <!-- Add Featured Article Section -->
+  <section class="featuredOne">
+    <div class="container">
+      <div class="gridWrapper">
+        <div class="wrapper">
+          <h2 class="sectionHeading">
+            {featured_article_subheading.toUpperCase()}
+          </h2>
+          <div class="featuredImg">
+            <img src={featured_article1_img} alt={featured_article1_heading} />
+          </div>
+          <h4 class="subHeading">{featured_article1_heading}</h4>
+          <p class="desc">{featured_article_description}</p>
+          <Button
+            text={featured_article_button_text}
+            href={".." + featured_article_slug}
+            className="btn"
+          />
+        </div>
+        <div class="wrapper">
+          <h2 class="sectionHeading">
+            {featured_article2_subheading.toUpperCase()}
+          </h2>
+          <div class="featuredImg">
+            <img src={featured_article2_img} alt={featured_article2_heading} />
+          </div>
+          <h4 class="subHeading">{featured_article2_heading}</h4>
+          <p class="desc">{featured_article2_description}</p>
+          <Button
+            className="btn"
+            text={featured_article2_button_text}
+            href={".." + featured_article2_slug}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<!-- Value Prop -->
-	<section class="about">
-		<div class="container">
-			<div class="aboutDesc pb-30">Plexsive is a technology solutions agency that help business and government navigate the ever-changing world in this GenerationAI. We implement customer focused, future proof solutions that are designed from the bottom up to ensure our customer's business are at the leading edge while maximising value and productivity.
-				<br><br>Our elite professionals work with you and your team to ensure the solutions we provide are tailored to your business and are designed to be scalable and adaptable to the ever changing world of technology. We pride ourselves on our ability to deliver the best possible results for our customers when most only provide the bare minimum.
-			</div>
-			<h2 class="sectionHeading">Our Services</h2>
-			<div class="serviceWrapper">
-				{
-			services.map((service) => {
-				return (
-        <div class="serviceBox" style={{backgroundImage: `url(${service.bgImage})`}}>
-						<h3 class="heading">{service.title}</h3>
-						<p class="desc">{service.text}</p>
-						<a href={service.slug} class="btn">Read More <ArrowSec /></a>
-					</div>
-				)
-			})
-			</div>
-		}
+  <!-- Case Studies Section -->
+  <section class="caseStudies">
+    <div class="container">
+      <h4 class="subHeading">Experience Counts</h4>
+      <h2 class="sectionHeading">Case Studies</h2>
+      <p class="desc">
+        Mavens delivers modern technology solutions, designed to make our
+        customer's business future ready while maximising value and
+        productivity.
+      </p>
+      <div class="projectWrapper">
+        {
+          projects.map((item: any, index: any) => (
+            <div class="project">
+              <div class="imgWrapper">
+                <img src={item.case_study_image} />
+              </div>
+              <div class="wrapper">
+                <h2 class="title">{item.case_study_title}</h2>
+                <h4 class="text">{item.case_study_subheading}</h4>
+                <Button
+                  text={item.case_study_buttontext}
+                  href={"../casestudies/" + item.case_study_slug}
+                  className="btn"
+                />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-		</div>
-			
-	</section>
-
-	<!-- Add Featured Article Section -->
-	<section class="featuredOne">
-				<div class="leftWrapper">
-				  </div>          
-				  <div class="rightWrapper">
-						<h2 class="sectionHeading">{featured_article_subheading.toUpperCase()}</h2>
-						<h4 class="subHeading">{featured_article_heading}</h4>
-						<p class="desc">{featured_article_description}</p>
-						<Button text={featured_article_button_text} href={".."+featured_article_slug} className="btn" />                
-				  </div>				
-	</section>
-
-	<!-- Case Studies Section -->
-	<section class="caseStudies">
-		  <div class="container">
-			  <h4 class="subHeading">Experience Counts</h4>
-			  <h2 class="sectionHeading">Case Studies</h2>
-			<p class="desc">
-				Mavens delivers modern technology solutions, designed to make our customer's business future ready while maximising value and productivity.
-			</p>
-			<div class="projectWrapper">
-				{
-			  projects.map((item:any, index:any) => (
-						  
-				<div class="project">
-					<div class="imgWrapper">
-						<img src={item.case_study_image} />                  
-					</div> 
-					<h2 class="title">
-						{item.case_study_title}
-					</h2>
-					<h4 class="text">
-						{item.case_study_subheading}
-					</h4>
-					<Button text={item.case_study_buttontext} href={"../casestudies/"+ item.case_study_slug}
-						className='btn' />			  
-				</div>          
-			  ))
-			}
-			</div>
-		</div>
-	</section>
-
-	<!-- Add Featured Article Section -->
-	<section class="featuredTwo">
-		<div class="container">
-			<div class="gridWrapper">
-				<div class="article">
-						<h2 class="sectionHeading">{featured_article2_subheading.toUpperCase()}</h2>
-						<h4 class="subHeading">{featured_article2_heading}</h4>
-						<p class="desc">{featured_article2_description}</p>
-						<Button className="btn" text={featured_article2_button_text} href={".."+featured_article2_slug}/>                
-				  </div>	
-				<div class="featuredImg">
-					<img src={featured_article2_img} alt={featured_article2_heading}>
-				  </div>          
-				  				
-			</div>
-		</div>
-	</section>
-
-	<section class="partners">
-		<div class="container">
-			<div class="sectionHeading">Our Partners</div>
-			<div class="row rowOne">
-			{
-				partnerLogos1.map(logo => <div class="logoWrapper"><img class="logo" src={logo.img} alt="" /></div>)
-			}
-		</div>
-		<div class="row rowTwo">
-			{
-				partnerLogos2.map(logo => <div class="logoWrapper"><img class="logo" src={logo.img} alt="" /></div>)
-			}
-		</div>
-		<div class="row rowOne">
-			{
-				partnerLogos3.map(logo => <div class="logoWrapper"><img class="logo" src={logo.img} alt="" /></div>)
-			}
-		</div>
-		<div class="row rowTwo">
-			{
-				partnerLogos4.map(logo => <div class="logoWrapper"><img class="logo" src={logo.img} alt="" /></div>)
-			}
-		</div>
-		</div>
-	</section>
+  <section class="partners">
+    <div class="container">
+      <div class="sectionHeading">Our Partners</div>
+      <div class="row rowOne">
+        {
+          partnerLogos1.map((logo) => (
+            <div class="logoWrapper">
+              <img class="logo" src={logo.img} alt="" />
+            </div>
+          ))
+        }
+      </div>
+      <div class="row rowTwo">
+        {
+          partnerLogos2.map((logo) => (
+            <div class="logoWrapper">
+              <img class="logo" src={logo.img} alt="" />
+            </div>
+          ))
+        }
+      </div>
+      <div class="row rowOne">
+        {
+          partnerLogos3.map((logo) => (
+            <div class="logoWrapper">
+              <img class="logo" src={logo.img} alt="" />
+            </div>
+          ))
+        }
+      </div>
+      <div class="row rowTwo">
+        {
+          partnerLogos4.map((logo) => (
+            <div class="logoWrapper">
+              <img class="logo" src={logo.img} alt="" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 </MainLayout>
- 
