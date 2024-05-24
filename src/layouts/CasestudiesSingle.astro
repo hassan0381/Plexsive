@@ -1,79 +1,91 @@
 ---
 import FAQ_Item from "../components/faq_item";
-import ChevronRight from "../icons/chevronRight.tsx"
-
-
+import ChevronRight from "../icons/chevronRight.tsx";
 
 const { casestudy } = Astro.props;
 
-const {id, category, sub_category, name, description, key_words, 
-  image, heading, highlight1_heading, highlight1_description, 
-  highlight2_heading, highlight2_description, highlight3_heading, 
-  highlight3_description, faqs, publish_timestamp, content} = casestudy.data;
-
+const {
+  id,
+  category,
+  sub_category,
+  name,
+  description,
+  key_words,
+  image,
+  heading,
+  highlight1_heading,
+  highlight1_description,
+  highlight2_heading,
+  highlight2_description,
+  highlight3_heading,
+  highlight3_description,
+  faqs,
+  publish_timestamp,
+  content,
+} = casestudy.data;
 
 const banner_img = {
-    backgroundImage:
-        "url('"+image+"')",
+  backgroundImage: "url('" + image + "')",
 };
 
-const category_url = "/"+category;
-const category_name =category[0].toUpperCase()+category.slice(1);
-const sub_heading_display = sub_category ? sub_category.replaceAll("-"," ") : "Real World Examples";
+const category_url = "/" + category;
+const category_name = category[0].toUpperCase() + category.slice(1);
+const sub_heading_display = sub_category
+  ? sub_category.replaceAll("-", " ")
+  : "Real World Examples";
 ---
 
- <section class="detailedpage_banner_topper">    
-    <div class="container">
-      <div class="wrapper">
-        <div class="detailedpage_banner_topper_categoryheading">
-          <a href={category_url}>{category_name}</a>    
-        </div>
-        <ChevronRight />
-        <div class="detailedpage_banner_topper_mainheading">
-          <p>{sub_heading_display}</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-hero" style={banner_img}>   
-    <div class="container">
-      <div class="contentWrapper">
-          <p class="subHeading">{sub_heading_display}</p>
-          <h1 class="heading">{heading}</h1>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<section class="articles">
+<section class="detailedpage_banner_topper">
   <div class="container">
-    <div class="contentWrapper">          
-        {content}       
-        <ul>
-          <li>
-              <h3>{highlight1_heading}</h3>
-              <p>{highlight1_description}</p>
-          </li>
-          <li>
-              <h3>{highlight2_heading}</h3>
-              <p>{highlight2_description}</p>
-          </li>
-          <li>
-              <h3>{highlight3_heading}</h3>
-              <p>{highlight3_description}</p>
-          </li>
-        </ul>          
+    <div class="wrapper">
+      <div class="detailedpage_banner_topper_categoryheading">
+        <a href={category_url}>{category_name}</a>
       </div>
-         
-      {faqs.map((item:any, index:any) => (
-        <FAQ_Item 
-          client:load
-          question={item.question_title} 
-          long_answer={item.question_answer}  />
-        ))
-      }
+      <ChevronRight />
+      <div class="detailedpage_banner_topper_mainheading">
+        <p>{sub_heading_display}</p>
+      </div>
+    </div>
   </div>
 </section>
 
+<section class="bg-hero" style={banner_img}>
+  <div class="container">
+    <div class="contentWrapper">
+      <p class="subHeading">{sub_heading_display}</p>
+      <h1 class="heading">{heading}</h1>
+    </div>
+  </div>
+</section>
 
+<section class="articles">
+  <div class="container">
+    <div class="contentWrapper">
+      {content}
+      <ul>
+        <li>
+          <h3>{highlight1_heading}</h3>
+          <p>{highlight1_description}</p>
+        </li>
+        <li>
+          <h3>{highlight2_heading}</h3>
+          <p>{highlight2_description}</p>
+        </li>
+        <li>
+          <h3>{highlight3_heading}</h3>
+          <p>{highlight3_description}</p>
+        </li>
+      </ul>
+    </div>
+
+    {
+      faqs.map((item: any, index: any) => (
+        <FAQ_Item
+          client:load
+          question={item.question_title}
+          long_answer={item.question_answer}
+        />
+      ))
+    }
+  </div>
+</section>

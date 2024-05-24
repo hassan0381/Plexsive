@@ -140,14 +140,16 @@ const value_prop =
               <div class="imgWrapper">
                 <img src={item.related_article_image} />
               </div>
-              <h2 class="title">{item.related_article_title}</h2>
-              <h4 class="text">{item.related_article_subheading}</h4>
+              <div class="wrapper">
+                <h2 class="title">{item.related_article_title}</h2>
+                <h4 class="text">{item.related_article_subheading}</h4>
 
-              <Button
-                className="btn"
-                text={item.related_article_buttontext}
-                href={"../pulse/" + item.related_article_slug}
-              />
+                <Button
+                  className="btn"
+                  text={item.related_article_buttontext}
+                  href={"../pulse/" + item.related_article_slug}
+                />
+              </div>
             </a>
           </div>
         ))

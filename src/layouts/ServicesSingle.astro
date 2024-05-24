@@ -1,7 +1,7 @@
 ---
 import ChevronRight from "../icons/chevronRight.tsx";
 import Button from "../components/button.tsx";
-import "../assets/main.css";
+import ArrowPri from "../icons/arrow-pri.tsx";
 
 const { service } = Astro.props;
 // console.log(industry);
@@ -112,24 +112,23 @@ const videosection_description = "Content to be added";
   <div class="container">
     <p class="subHeading">{expertise_subheading_display}</p>
     <h2 class="sectionHeading">{expertise_heading}</h2>
-    {
-      expertise_detail.map((item: any, index: any) => (
-        <a href={"../expertise/" + item.slug}>
-          <div
-            class="detailedpage_expertiseitem_container"
-            style={{ backgroundColor: expertise_table_colours[index] }}
-          >
-            <div class="detailedpage_expertiseitem_heading">{item.name}</div>
-            <div class="expertiseWrapper">
-              <p class="detailedpage_expertiseitem_description">
-                {item.description}
-              </p>
-              <ChevronRight />{" "}
+    <div class="gridWrapper">
+      {
+        expertise_detail.map((item: any, index: any) => (
+          <a href={"../expertise/" + item.slug}>
+            <div class="boxWrapper">
+              <div class="contentWrapper">
+                <h2 class="heading">{item.name}</h2>
+                <p class="desc">{item.description}</p>
+              </div>
+              <div class="expertiseWrapper">
+                <ArrowPri />
+              </div>
             </div>
-          </div>
-        </a>
-      ))
-    }
+          </a>
+        ))
+      }
+    </div>
   </div>
 </section>
 <section class="caseStudies">
